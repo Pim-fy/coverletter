@@ -7,7 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.coverletter.coverletter.dto.AuthDto;
-import com.coverletter.coverletter.dto.MemberUpdateDto;
+import com.coverletter.coverletter.dto.UpdateMemberDto;
 import com.coverletter.coverletter.dto.RegisterDto;
 import com.coverletter.coverletter.entity.Member;
 import com.coverletter.coverletter.repository.MemberRepository;
@@ -25,7 +25,7 @@ public class UserService {
     // 로그인, 회원가입, 회원정보수정
 
     // 로그인
-    public AuthDto.AuthResponse auth(AuthDto.AuthRequest request) {
+    public AuthDto.AuthResponse authResponse(AuthDto.AuthRequest request) {
         Optional<Member> memberOpt = memberRepository.findByLoginId(request.getLoginId());
         if(memberOpt.isPresent() && passwordEncoder.matches(request.getPassword(), memberOpt.get().getPassword())) {
             return new AuthDto.AuthResponse(true, "로그인 성공");
@@ -53,7 +53,7 @@ public class UserService {
     }
 
     // 회원정보 수정
-    public boolean updateMember(Long userId, MemberUpdateDto dto) {
+    public boolean updateMember(Long userId, UpdateMemberDto dto) {
         Optional<Member> memberOpt = memberRepository.findByUserId(userId);
         if(memberOpt.isPresent()) {
             Member member = memberOpt.get();

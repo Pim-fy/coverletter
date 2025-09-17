@@ -1,6 +1,6 @@
 package com.coverletter.coverletter.entity;
 
-import com.coverletter.coverletter.dto.MemberUpdateDto;
+import com.coverletter.coverletter.dto.UpdateMemberDto;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import jakarta.persistence.Entity;
@@ -40,7 +40,7 @@ public class Member {
 
     private String profileImagePath;    // 사진 저장 경로
 
-    public void updateMember(MemberUpdateDto dto, PasswordEncoder encoder) {
+    public void updateMember(UpdateMemberDto dto, PasswordEncoder encoder) {
         if(dto.getPassword() != null) {this.password = encoder.encode(dto.getPassword());}
         if(dto.getName() != null) {this.name = dto.getName();}
         if(dto.getPhoneNumber() != null) {this.phoneNumber = dto.getPhoneNumber();}

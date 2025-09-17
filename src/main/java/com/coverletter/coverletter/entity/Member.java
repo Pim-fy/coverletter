@@ -18,10 +18,6 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)     // JPA에서 엔터티의 PK값을 자동으로 생성. DB에서 자동 증가 방식으로 PK를 생성
     private Long userId;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private Member member;
-
     private String password;
 
     private String name;

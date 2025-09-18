@@ -39,7 +39,7 @@ public class Member {
 
     private String profileImagePath;    // 사진 저장 경로
 
-    public void updateMember(UpdateMemberDto dto, PasswordEncoder encoder) {
+    public void updateMember(UpdateMemberDto.UpdateMemberRequest dto, PasswordEncoder encoder) {
         if(dto.getPassword() != null) {this.password = encoder.encode(dto.getPassword());}
     }
 }

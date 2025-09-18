@@ -50,20 +50,6 @@ public class UserService {
         memberRepository.save(member);
 
         return new RegisterDto.RegisterResponse(true, "회원가입 완료");
-    }
-
-    // 회원정보 수정
-    public boolean updateMember(Long userId, UpdateMemberDto dto) {
-        Optional<Member> memberOpt = memberRepository.findByUserId(userId);
-        if(memberOpt.isPresent()) {
-            Member member = memberOpt.get();
-            member.updateMember(dto, passwordEncoder);
-            memberRepository.save(member);
-            return true;
-        } else {
-            return false;
-        }
-    }
-    
+    }    
 
 }

@@ -3,9 +3,7 @@ package com.coverletter.coverletter.service;
 import java.util.Optional;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import com.coverletter.coverletter.dto.ReadMemberDto;
-import com.coverletter.coverletter.dto.UpdateMemberDto;
+import com.coverletter.coverletter.dto.MemberDto;
 import com.coverletter.coverletter.entity.Member;
 import com.coverletter.coverletter.repository.MemberRepository;
 import jakarta.transaction.Transactional;
@@ -23,12 +21,12 @@ public class MemberService {
     }
 
     // 회원 정보 조회 로직(이력서)
-    public ReadMemberDto.ReadMemberResponse readMemberResponse(Long userId) {
+    public MemberDto.ReadResponse readResponse(Long userId) {
         Optional<Member> memberOpt = memberRepository.findByUserId(userId);
         if(memberOpt.isPresent()) {
             Member member = memberOpt.get();
             
-            ReadMemberDto.ReadMemberResponse response = new ReadMemberDto.ReadMemberResponse();
+            MemberDto.ReadResponse response = new MemberDto.ReadResponse();
             response.setSuccess(true);
             response.setMessage("조회 성공");
             response.setName(member.getName());
@@ -41,7 +39,7 @@ public class MemberService {
 
             return response;
         } else {
-            ReadMemberDto.ReadMemberResponse response = new ReadMemberDto.ReadMemberResponse();
+            MemberDto.ReadResponse response = new MemberDto.ReadResponse();
             response.setSuccess(false);
             response.setMessage("조회 실패");
             
@@ -50,7 +48,7 @@ public class MemberService {
     }
     
     // 회원정보 수정(이력서)
-    public UpdateMemberDto.UpdateMemberResponse updateMemberResponse(Long userId, UpdateMemberDto.UpdateMemberRequest dto) {
+    public MemberDto.UpdateResponse updateResponse(Long userId, MemberDto.UpdateRequest dto) {
         Optional<Member> memberOpt = memberRepository.findByUserId(userId);
         if(memberOpt.isPresent()) {
             Member member = memberOpt.get();
@@ -63,9 +61,9 @@ public class MemberService {
             if(dto.getDateOfBirth() != null) {member.setDateOfBirth(dto.getDateOfBirth());}
             if(dto.getProfileImagePath() != null) {member.setProfileImagePath(dto.getProfileImagePath());}
             memberRepository.save(member);
-            return new UpdateMemberDto.UpdateMemberResponse(true, "수정 완료.");
+            return new MemberDto.UpdateResponse(true, "수정 완료.");
         } else {
-            return new UpdateMemberDto.UpdateMemberResponse(false, "수정 실패.");
+            return new MemberDto.UpdateResponse(false, "수정 실패.");
         }
     }
 

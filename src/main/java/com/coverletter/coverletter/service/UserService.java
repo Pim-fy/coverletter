@@ -7,7 +7,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.coverletter.coverletter.dto.AuthDto;
-import com.coverletter.coverletter.dto.UpdateMemberDto;
 import com.coverletter.coverletter.dto.RegisterDto;
 import com.coverletter.coverletter.entity.Member;
 import com.coverletter.coverletter.repository.MemberRepository;
@@ -22,7 +21,7 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    // 로그인, 회원가입, 회원정보수정
+    // 로그인, 회원가입
 
     // 로그인
     public AuthDto.AuthResponse authResponse(AuthDto.AuthRequest request) {

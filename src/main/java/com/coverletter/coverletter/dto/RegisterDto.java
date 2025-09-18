@@ -1,8 +1,6 @@
 package com.coverletter.coverletter.dto;
 
-
 import com.coverletter.coverletter.entity.Member;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

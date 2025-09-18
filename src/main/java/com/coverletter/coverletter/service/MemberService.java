@@ -24,12 +24,13 @@ public class MemberService {
     // 아이디에 해당하는 테이블 불러오기
     
     
-    // 추가로 입력받은 정보를 저장하기(수정)
+    // 회원정보 수정
     public UpdateMemberDto.UpdateMemberResponse updateMemberResponse(Long userId, UpdateMemberDto.UpdateMemberRequest dto) {
         Optional<Member> memberOpt = memberRepository.findByUserId(userId);
         if(memberOpt.isPresent()) {
             Member member = memberOpt.get();
             member.updateMember(dto, passwordEncoder);
+            member.setName(dto.getName());
             member.setPhoneNumber(dto.getPhoneNumber());
             member.setEmergencyPhoneNumber(dto.getEmergencyPhoneNumber());
             member.setAddress(dto.getAddress());

@@ -3,6 +3,8 @@ package com.coverletter.coverletter.service;
 import java.util.Optional;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import com.coverletter.coverletter.dto.ReadMemberDto;
 import com.coverletter.coverletter.dto.UpdateMemberDto;
 import com.coverletter.coverletter.entity.Member;
 import com.coverletter.coverletter.repository.MemberRepository;
@@ -21,12 +23,31 @@ public class MemberService {
     }
 
     // 회원 정보 조회 로직(이력서)
-    
+    public ReadMemberDto.ReadMemberResponse readMemberResponse(Long userId) {
+        Optional<Member> memberOpt = memberRepository.findByUserId(userId);
+        if(memberOpt.isPresent()) {
+            Member member = memberOpt.get();
+            
+            ReadMemberDto.ReadMemberResponse response = new ReadMemberDto.ReadMemberResponse();
+            response.setSuccess(true);
+            response.setMessage("조회 성공");
+            response.setName(member.getName());
+            response.setPhoneNumber(member.getPhoneNumber());
+            response.setEmergencyPhoneNumber(member.getEmergencyPhoneNumber());
+            response.setAddress(member.getAddress());
+            response.setEmail(member.getEmail());
+            response.setDateOfBirth(member.getDateOfBirth());
+            response.setProfileImagePath(member.getProfileImagePath());
 
-    // 회원 정보 수정시에
-    // 회원 정보에 있는 기본 항목 들로 이미 DB에 들어가 있기 때문에
-    // 아이디에 해당하는 테이블 불러오기
-    
+            return response;
+        } else {
+            ReadMemberDto.ReadMemberResponse response = new ReadMemberDto.ReadMemberResponse();
+            response.setSuccess(false);
+            response.setMessage("조회 실패");
+            
+            return response;
+        }
+    }
     
     // 회원정보 수정(이력서)
     public UpdateMemberDto.UpdateMemberResponse updateMemberResponse(Long userId, UpdateMemberDto.UpdateMemberRequest dto) {

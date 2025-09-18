@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.coverletter.coverletter.dto.ReadMemberDto;
 import com.coverletter.coverletter.dto.UpdateMemberDto;
 import com.coverletter.coverletter.service.MemberService;
 
@@ -24,12 +25,10 @@ public class MemberController {
         this.memberService = memberService;
     }
 
-    //@GetMapping("/{userId}")        // 저장된 회원 정보 조회
-    //public Member readMember(
-    //    @PathVariable Long userId) {
-    //        // 조회 로직
-    //        return ;
-    //    } 
+    @GetMapping("/{userId}")        // 저장된 회원 정보 조회
+    public ReadMemberDto.ReadMemberResponse readMember(@PathVariable Long userId) {
+        return memberService.readMemberResponse(userId);
+    } 
 
 
     @PutMapping("/{userId}")        // 회원 정보 수정

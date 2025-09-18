@@ -21,16 +21,12 @@ public class MemberController {
     }
 
     @GetMapping("/{userId}")        // 저장된 회원 정보 조회
-    public MemberDto.ReadResponse readMember(@PathVariable Long userId) {
+    public MemberDto.ReadResponse readResponse(@PathVariable Long userId) {
         return memberService.readResponse(userId);
     } 
-
 
     @PutMapping("/{userId}")        // 회원 정보 수정
     public MemberDto.UpdateResponse updateResponse(@PathVariable Long userId, @RequestBody @Valid MemberDto.UpdateRequest request) {
         return memberService.updateResponse(userId, request);
     }
-
-
-    
 }

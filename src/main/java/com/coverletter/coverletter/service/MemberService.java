@@ -23,10 +23,10 @@ public class MemberService {
     // 회원 정보 조회 로직(이력서)
     public MemberDto.ReadResponse readResponse(Long userId) {
         Optional<Member> memberOpt = memberRepository.findByUserId(userId);
+        MemberDto.ReadResponse response = new MemberDto.ReadResponse();
         if(memberOpt.isPresent()) {
             Member member = memberOpt.get();
             
-            MemberDto.ReadResponse response = new MemberDto.ReadResponse();
             response.setSuccess(true);
             response.setMessage("조회 성공");
             response.setName(member.getName());
@@ -36,15 +36,11 @@ public class MemberService {
             response.setEmail(member.getEmail());
             response.setDateOfBirth(member.getDateOfBirth());
             response.setProfileImagePath(member.getProfileImagePath());
-
-            return response;
         } else {
-            MemberDto.ReadResponse response = new MemberDto.ReadResponse();
             response.setSuccess(false);
             response.setMessage("조회 실패");
-            
-            return response;
         }
+        return response;
     }
     
     // 회원정보 수정(이력서)

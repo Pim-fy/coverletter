@@ -4,6 +4,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
+
 import com.coverletter.coverletter.dto.TrainingDto;
 import com.coverletter.coverletter.entity.Member;
 import com.coverletter.coverletter.entity.Training;
@@ -11,6 +14,7 @@ import com.coverletter.coverletter.repository.MemberRepository;
 import com.coverletter.coverletter.repository.TrainingRepository;
 import jakarta.transaction.Transactional;
 
+@Service
 public class TrainingService {
     private final TrainingRepository trainingRepository;
     private final MemberRepository memberRepository;
@@ -93,7 +97,7 @@ public class TrainingService {
             return new TrainingDto.UpdateResponse(false, "수정 실패.");
         }
     }
-    
+
     // 교육 정보 삭제
     @Transactional
     public TrainingDto.DeleteResponse deleteResponse(Long userId, Long trainingId) {

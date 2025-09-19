@@ -43,7 +43,7 @@ public class CareerService {
         career.setReasonForLeaving(request.getReasonForLeaving());
         careerRepository.save(career);
 
-        return new CareerDto.CreateResponse(true, "경력 정보 생성 완료",career.getCareerId());
+        return new CareerDto.CreateResponse(true, "경력 정보 생성 완료", career.getCareerId());
 
     }
 

@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.stereotype.Service;
+
 import com.coverletter.coverletter.dto.MilitaryDto;
 import com.coverletter.coverletter.entity.Member;
 import com.coverletter.coverletter.entity.Military;
@@ -13,6 +15,7 @@ import com.coverletter.coverletter.repository.MilitaryRepository;
 
 import jakarta.transaction.Transactional;
 
+@Service
 public class MilitaryService {
     private final MilitaryRepository militaryRepository;
     private final MemberRepository memberRepository;

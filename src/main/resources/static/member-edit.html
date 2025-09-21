@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>개인정보 및 지원정보 관리</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .container { max-width: 900px; margin-top: 50px; }
+        .card { margin-bottom: 2rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="mb-4">개인정보 및 지원정보 관리</h2>
+
+       <div class="card">
+    <div class="card-header"><strong>개인 정보 수정</strong></div>
+    <div class="card-body">
+        <form id="member-form">
+            <div class="text-center mb-4">
+                <img id="image-preview" src="/images/default-profile.png" alt="프로필 이미지" class="rounded-circle" width="150" height="150" style="object-fit: cover;">
+                <input type="file" id="profileImage" class="d-none" accept="image/*">
+                <button type="button" id="upload-btn" class="btn btn-outline-secondary btn-sm mt-2">이미지 변경</button>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6"><label for="name" class="form-label">성명</label><input type="text" class="form-control" id="name"></div>
+                <div class="col-md-6"><label for="dateOfBirth" class="form-label">생년월일</label><input type="text" class="form-control" id="dateOfBirth" placeholder="YYYY.MM.DD"></div>
+            </div>
+            <div class="mb-3"><label for="address" class="form-label">실거주지 주소</label><input type="text" class="form-control" id="address"></div>
+            <div class="row mb-3">
+                <div class="col-md-6"><label for="phoneNumber" class="form-label">연락처(H.P)</label><input type="text" class="form-control" id="phoneNumber"></div>
+                <div class="col-md-6"><label for="emergencyPhoneNumber" class="form-label">비상연락처</label><input type="text" class="form-control" id="emergencyPhoneNumber"></div>
+            </div>
+            <div class="mb-3"><label for="email" class="form-label">E-mail</label><input type="email" class="form-control" id="email"></div>
+            <button type="submit" class="btn btn-primary">개인정보 저장</button>
+        </form>
+    </div>
+</div>
+
+        <div class="card">
+            <div class="card-header"><strong>지원 정보 수정</strong></div>
+            <div class="card-body">
+                <form id="recruit-form">
+                    <input type="hidden" id="recruitId">
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="recruitmentType" class="form-label">구분</label>
+                            <select class="form-select" id="recruitmentType">
+                                <option value="NEWCOMMER">신입</option>
+                                <option value="EXPERIENCED">경력</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4"><label for="recruitmentPart" class="form-label">모집부문</label><input type="text" class="form-control" id="recruitmentPart"></div>
+                        <div class="col-md-4"><label for="salaryRequirement" class="form-label">희망연봉</label><input type="text" class="form-control" id="salaryRequirement"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">지원정보 저장</button>
+                    <button type="button" id="recruit-delete-all-btn" class="btn btn-danger">전체 삭제</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="/index.html" class="btn btn-outline-secondary">메인 이력서로 돌아가기</a>
+        </div>
+    </div>
+    <script src="/js/member-edit.js"></script>
+</body>
+</html>

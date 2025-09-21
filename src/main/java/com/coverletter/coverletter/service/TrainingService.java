@@ -54,6 +54,7 @@ public class TrainingService {
         if(trainingList != null && !trainingList.isEmpty()) {
             List<TrainingDto.ReadResponse.TrainingInfo> trainingInfos = trainingList.stream()
             .map(training -> new TrainingDto.ReadResponse.TrainingInfo(
+                training.getTrainingId(),
                 training.getTrainingStartDate(),
                 training.getTrainingEndDate(),
                 training.getTrainingName(),

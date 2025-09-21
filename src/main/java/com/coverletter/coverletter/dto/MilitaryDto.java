@@ -49,6 +49,7 @@ public class MilitaryDto {
         @Setter
         @AllArgsConstructor @NoArgsConstructor
         public static class MilitaryInfo {
+            private Long militaryId;
             private MilitaryStatus militaryStatus;      // 병역구분
             private String militaryRank;        // 계급
             private String militaryBranch;      // 병과

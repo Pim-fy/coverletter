@@ -45,6 +45,7 @@ public class RecruitDto {
         @Setter
         @AllArgsConstructor @NoArgsConstructor
         public static class RecruitInfo {
+            private Long recruitId;
             private RecruitmentType recruitmentType;    // 구분 - 신입, 경력
             private String recruitmentPart;         // 모집부문 - 개발,...  
             private String salaryRequirement;       // 희망연봉 - String형태

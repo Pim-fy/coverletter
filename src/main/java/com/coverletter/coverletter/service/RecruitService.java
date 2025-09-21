@@ -50,6 +50,7 @@ public class RecruitService {
         if(recruitList != null && !recruitList.isEmpty()) {
             List<RecruitDto.ReadResponse.RecruitInfo> recruitInfos = recruitList.stream()
             .map(recruit -> new RecruitDto.ReadResponse.RecruitInfo(
+                recruit.getRecruitId(),
                 recruit.getRecruitmentType(),
                 recruit.getRecruitmentPart(),
                 recruit.getSalaryRequirement()    
@@ -105,5 +106,12 @@ public class RecruitService {
         } else {
             return new RecruitDto.DeleteResponse(false, "삭제 실패");
         }
+    }
+
+    // 모든 지원 정보 삭제
+    @Transactional
+    public RecruitDto.DeleteResponse deleteAllResponse(Long userId) {
+        recruitRepository.deleteByMemberUserId(userId);
+        return new RecruitDto.DeleteResponse(true, "모든 지원 정보가 삭제되었습니다.");
     }
 }

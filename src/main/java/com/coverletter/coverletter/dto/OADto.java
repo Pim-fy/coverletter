@@ -47,6 +47,7 @@ public class OADto {
         @Setter
         @AllArgsConstructor @NoArgsConstructor
         public static class OAInfo {
+            private Long oaId;
             private OAGrade hancom;
             private OAGrade excel;
             private OAGrade powerpoint;

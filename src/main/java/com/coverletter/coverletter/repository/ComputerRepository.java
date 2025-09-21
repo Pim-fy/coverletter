@@ -10,4 +10,5 @@ public interface ComputerRepository extends JpaRepository<Computer, Long> {
     List<Computer> findByMemberUserId(Long userId);
     Optional<Computer> findByComputerId(Long computerId);
     
+    void deleteByMemberUserId(Long userId);
 }

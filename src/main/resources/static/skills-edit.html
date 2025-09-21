@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>기타 능력 정보 관리</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .container { max-width: 900px; margin-top: 50px; }
+        .card { margin-bottom: 2rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="mb-4">기타 능력 정보 관리</h2>
+
+        <div class="card">
+            <div class="card-header"><strong>OA 활용능력</strong></div>
+            <div class="card-body">
+                <form id="oa-form">
+                    <input type="hidden" id="oaId">
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="hancom" class="form-label">한글</label>
+                            <select id="hancom" class="form-select"><option value="HIGH">상</option><option value="MEDIUM">중</option><option value="LOW">하</option></select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="excel" class="form-label">엑셀</label>
+                            <select id="excel" class="form-select"><option value="HIGH">상</option><option value="MEDIUM">중</option><option value="LOW">하</option></select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="powerpoint" class="form-label">파워포인트</label>
+                            <select id="powerpoint" class="form-select"><option value="HIGH">상</option><option value="MEDIUM">중</option><option value="LOW">하</option></select>
+                        </div>
+                    </div>
+                    <div class="mb-3"><label for="etc" class="form-label">기타 가능 S/W</label><input type="text" class="form-control" id="etc"></div>
+                    <button type="submit" class="btn btn-primary">OA 능력 저장</button>
+                    <button type="button" id="oa-delete-all-btn" class="btn btn-danger">전체 삭제</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header"><strong>컴퓨터 사용능력</strong></div>
+            <div class="card-body">
+                <form id="computer-form">
+                    <input type="hidden" id="computerId">
+                    <div class="mb-3"><label for="computer" class="form-label">개발 언어 또는 기술적인 TOOL</label><textarea class="form-control" id="computer" rows="4"></textarea></div>
+                    <button type="submit" class="btn btn-primary">컴퓨터 능력 저장</button>
+                    <button type="button" id="computer-delete-all-btn" class="btn btn-danger">전체 삭제</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header"><strong>병역사항</strong></div>
+            <div class="card-body">
+                <form id="military-form">
+                    <input type="hidden" id="militaryId">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="militaryStatus" class="form-label">병역구분</label>
+                            <select id="militaryStatus" class="form-select"><option value="COMPLETED">군필</option><option value="INCOMPLETE">미필</option><option value="EXEMPTION">면제</option><option value="NA">해당없음</option></select>
+                        </div>
+                        <div class="col-md-6"><label for="militaryRank" class="form-label">계급</label><input type="text" class="form-control" id="militaryRank"></div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6"><label for="militaryBranch" class="form-label">병과</label><input type="text" class="form-control" id="militaryBranch"></div>
+                        <div class="col-md-6"><label for="militaryDischarge" class="form-label">제대구분</label><input type="text" class="form-control" id="militaryDischarge"></div>
+                    </div>
+                     <div class="row mb-3">
+                        <div class="col-md-6"><label for="militaryStartDate" class="form-label">복무 시작일</label><input type="text" class="form-control" id="militaryStartDate" placeholder="YYYY.MM.DD"></div>
+                        <div class="col-md-6"><label for="militaryEndDate" class="form-label">복무 종료일</label><input type="text" class="form-control" id="militaryEndDate" placeholder="YYYY.MM.DD"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">병역사항 저장</button>
+                    <button type="button" id="military-delete-all-btn" class="btn btn-danger">전체 삭제</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4"><a href="/index.html" class="btn btn-outline-secondary">메인 이력서로 돌아가기</a></div>
+    </div>
+    <script src="/js/skills-edit.js"></script>
+</body>
+</html>

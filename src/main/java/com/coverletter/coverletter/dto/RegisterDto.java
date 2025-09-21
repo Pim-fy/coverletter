@@ -18,14 +18,14 @@ public class RegisterDto {
 
         private String name;
 
-        private String phoneNumber;
+        private String email;
 
         public Member toMemberEntity(String encodedPassword) {
             return Member.builder()
                          .loginId(this.loginId)
                          .password(encodedPassword)
                          .name(this.name)
-                         .phoneNumber(this.phoneNumber)
+                         .email(this.email)
                          .build();
         }
     }

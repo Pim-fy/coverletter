@@ -22,21 +22,21 @@ public class CareerController {
     }
 
     @PostMapping("/{userId}")       // 경력 정보 생성
-    public CareerDto.CreateResponse createResponse(@PathVariable Long userId, @RequestBody @Valid CareerDto.CreateRequest request) {
+    public CareerDto.CreateResponse createResponse(@PathVariable("userId") Long userId, @RequestBody @Valid CareerDto.CreateRequest request) {
         return careerService.createResponse(userId, request);
     }
 
     @GetMapping("/{userId}")        // 저장된 경력 정보 조회
-    public CareerDto.ReadResponse readResponse(@PathVariable Long userId) {
+    public CareerDto.ReadResponse readResponse(@PathVariable("userId") Long userId) {
         return careerService.readResponse(userId);
     }
     
     @PutMapping("/{userId}")        // 경력 정보 수정
-    public CareerDto.UpdateResponse updateResponse(@PathVariable Long userId, @RequestBody @Valid CareerDto.UpdateRequest request) {
+    public CareerDto.UpdateResponse updateResponse(@PathVariable("userId") Long userId, @RequestBody @Valid CareerDto.UpdateRequest request) {
         return careerService.updateResponse(userId, request);
     }
     @DeleteMapping("/{userId}/{careerId}")      // 경력 정보 삭제
-    public CareerDto.DeleteResponse deleteResponse(@PathVariable Long userId, @PathVariable Long careerId) {
+    public CareerDto.DeleteResponse deleteResponse(@PathVariable("userId") Long userId, @PathVariable("careerId") Long careerId) {
         return careerService.deleteResponse(userId, careerId);
     }
 

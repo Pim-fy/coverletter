@@ -10,4 +10,6 @@ public interface RecruitRepository extends JpaRepository<Recruit, Long> {
     
     List<Recruit> findByMemberUserId(Long userId);
     Optional<Recruit> findByRecruitId(Long recruitId);
+
+    void deleteByMemberUserId(Long userId); // 모든 지원 정보 삭제
 }

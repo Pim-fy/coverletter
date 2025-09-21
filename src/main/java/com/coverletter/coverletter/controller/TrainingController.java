@@ -23,21 +23,21 @@ public class TrainingController {
     }
 
     @PostMapping("/{userId}")       // 교육 정보 생성
-    public TrainingDto.CreateResponse createResponse(@PathVariable Long userId, @RequestBody @Valid TrainingDto.CreateRequest request) {
+    public TrainingDto.CreateResponse createResponse(@PathVariable("userId") Long userId, @RequestBody @Valid TrainingDto.CreateRequest request) {
         return trainingService.createResponse(userId, request);
     }
 
     @GetMapping("/{userId}")        // 교육 정보 조회
-    public TrainingDto.ReadResponse readResponse(@PathVariable Long userId) {
+    public TrainingDto.ReadResponse readResponse(@PathVariable("userId") Long userId) {
         return trainingService.readResponse(userId);
     }
     
     @PutMapping("/{userId}")        // 교육 정보 수정
-    public TrainingDto.UpdateResponse updateResponse(@PathVariable Long userId, @RequestBody @Valid TrainingDto.UpdateRequest request) {
+    public TrainingDto.UpdateResponse updateResponse(@PathVariable("userId") Long userId, @RequestBody @Valid TrainingDto.UpdateRequest request) {
         return trainingService.updateResponse(userId, request);
     }
     @DeleteMapping("/{userId}/{trainingId}")      // 교육 정보 삭제
-    public TrainingDto.DeleteResponse deleteResponse(@PathVariable Long userId, @PathVariable Long trainingId) {
+    public TrainingDto.DeleteResponse deleteResponse(@PathVariable("userId") Long userId, @PathVariable("trainingId") Long trainingId) {
         return trainingService.deleteResponse(userId, trainingId);
     }
 }

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>교육사항 정보 관리</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .container { max-width: 900px; margin-top: 50px; }
+        .card { margin-bottom: 2rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="mb-4">교육사항 정보 관리</h2>
+
+        <div class="card">
+            <div class="card-header"><strong>기존 교육사항 목록</strong></div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead><tr><th>교육과정명</th><th>교육기관</th><th>교육기간</th><th>수료여부</th><th>관리</th></tr></thead>
+                    <tbody id="training-list-container"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header"><strong id="form-title">새 교육사항 추가</strong></div>
+            <div class="card-body">
+                <form id="training-form">
+                    <input type="hidden" id="trainingId">
+                    <div class="mb-3"><label for="trainingName" class="form-label">교육 과정명</label><input type="text" class="form-control" id="trainingName" required></div>
+                    <div class="mb-3"><label for="trainingCompany" class="form-label">교육 기관</label><input type="text" class="form-control" id="trainingCompany"></div>
+                    <div class="row mb-3">
+                        <div class="col"><label for="trainingStartDate" class="form-label">교육 시작일</label><input type="text" class="form-control" id="trainingStartDate" placeholder="YYYY.MM.DD"></div>
+                        <div class="col"><label for="trainingEndDate" class="form-label">교육 종료일</label><input type="text" class="form-control" id="trainingEndDate" placeholder="YYYY.MM.DD"></div>
+                    </div>
+                    <div class="mb-3"><label for="trainingContent" class="form-label">교육 내용</label><textarea class="form-control" id="trainingContent" rows="3"></textarea></div>
+                    <div class="mb-3">
+                        <label for="trainingStatus" class="form-label">수료 여부</label>
+                        <select id="trainingStatus" class="form-select">
+                            <option value="COMPLETED">수료</option>
+                            <option value="IN_PROGRESS">교육중</option>
+                            <option value="INCOMPLETED">미수료</option>
+                            <option value="NOT_APPLICABLE">해당없음</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">저장하기</button>
+                    <button type="button" class="btn btn-secondary" id="clear-form-btn">새로 입력</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4"><a href="/index.html" class="btn btn-outline-secondary">메인 이력서로 돌아가기</a></div>
+    </div>
+
+    <table style="display: none;">
+        <tbody id="templates">
+            <tr id="training-row-template">
+                <td class="name"></td><td class="company"></td><td class="period"></td><td class="status"></td>
+                <td>
+                    <button class="btn btn-sm btn-outline-primary edit-btn">수정</button>
+                    <button class="btn btn-sm btn-outline-danger delete-btn">삭제</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script src="/js/training-edit.js"></script>
+</body>
+</html>

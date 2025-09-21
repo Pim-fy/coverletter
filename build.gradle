@@ -6,7 +6,6 @@ plugins {
 
 group = 'com.coverletter'
 version = '0.0.1-SNAPSHOT'
-description = 'Demo project for Spring Boot'
 
 java {
 	toolchain {
@@ -28,8 +27,22 @@ dependencies {
 	implementation 'mysql:mysql-connector-java:8.0.33'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	// 웹 애플리케이션용 내장 톰캣 포함
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // 개발 편의성: 파일 수정 시 자동 재시작, 라이브리로드
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    // (필요 시) JSON 바인딩
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs += '-parameters'
 }

@@ -46,6 +46,7 @@ public class CareerDto {
         @Setter
         @AllArgsConstructor @NoArgsConstructor
         public static class CareerInfo {
+            private Long careerId; 
             private String company;             // 회사명
             private String careerStartDate;     // 근무 기간(시작일)
             private String careerEndDate;       // 근무 기간(종료일)

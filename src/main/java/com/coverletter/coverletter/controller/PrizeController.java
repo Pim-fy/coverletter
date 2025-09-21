@@ -23,21 +23,21 @@ public class PrizeController {
     }
 
     @PostMapping("/{userId}")       // 수상 정보 생성
-    public PrizeDto.CreateResponse createResponse(@PathVariable Long userId, @RequestBody @Valid PrizeDto.CreateRequest request) {
+    public PrizeDto.CreateResponse createResponse(@PathVariable("userId") Long userId, @RequestBody @Valid PrizeDto.CreateRequest request) {
         return prizeService.createResponse(userId, request);
     }
 
     @GetMapping("/{userId}")        // 수상 정보 조회
-    public PrizeDto.ReadResponse readResponse(@PathVariable Long userId) {
+    public PrizeDto.ReadResponse readResponse(@PathVariable("userId") Long userId) {
         return prizeService.readResponse(userId);
     }
     
     @PutMapping("/{userId}")        // 수상 정보 수정
-    public PrizeDto.UpdateResponse updateResponse(@PathVariable Long userId, @RequestBody @Valid PrizeDto.UpdateRequest request) {
+    public PrizeDto.UpdateResponse updateResponse(@PathVariable("userId") Long userId, @RequestBody @Valid PrizeDto.UpdateRequest request) {
         return prizeService.updateResponse(userId, request);
     }
     @DeleteMapping("/{userId}/{prizeId}")      // 수상 정보 삭제
-    public PrizeDto.DeleteResponse deleteResponse(@PathVariable Long userId, @PathVariable Long prizeId) {
+    public PrizeDto.DeleteResponse deleteResponse(@PathVariable("userId") Long userId, @PathVariable("prizeId") Long prizeId) {
         return prizeService.deleteResponse(userId, prizeId);
     }
 }

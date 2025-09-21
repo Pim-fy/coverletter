@@ -45,6 +45,7 @@ public class PrizeDto {
         @Setter
         @AllArgsConstructor @NoArgsConstructor
         public static class PrizeInfo {
+            private Long prizeId;
             private String PrizeName;       // 수상 내용
             private String PrizeCompany;    // 수상처
             private String PrizeYear;       // 수상 년도

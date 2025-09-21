@@ -53,6 +53,7 @@ public class OAService {
         if(oaList != null && !oaList.isEmpty()) {
             List<OADto.ReadResponse.OAInfo> oaInfos = oaList.stream()
             .map(oa -> new OADto.ReadResponse.OAInfo(
+                oa.getOaId(),
                 oa.getHancom(),
                 oa.getExcel(),
                 oa.getPowerpoint(),
@@ -110,5 +111,12 @@ public class OAService {
         } else {
             return new OADto.DeleteResponse(false, "삭제 실패.");
         }
+    }
+
+    // OA 정보 전체 삭제
+    @Transactional
+    public OADto.DeleteResponse deleteAllResponse(Long userId) {
+        oaRepository.deleteByMemberUserId(userId);
+        return new OADto.DeleteResponse(true, "모든 OA 정보가 삭제되었습니다.");
     }
 }

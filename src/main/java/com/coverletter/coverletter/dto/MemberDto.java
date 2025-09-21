@@ -19,6 +19,7 @@ public class MemberDto {
     public static class ReadResponse {
         private Boolean success;
         private String message;
+        private Long userId;
         private String name;
         private String phoneNumber;
         private String emergencyPhoneNumber;

@@ -52,6 +52,7 @@ public class QualificationService {
         if(qualificationList != null && !qualificationList.isEmpty()) {
             List<QualificationDto.ReadResponse.QualificationInfo> qualificationInfos = qualificationList.stream()
             .map(qualification -> new QualificationDto.ReadResponse.QualificationInfo(
+                qualification.getQualificationId(),
                 qualification.getQualificationName(),
                 qualification.getQualificationDate(),
                 qualification.getQualificationCompany()

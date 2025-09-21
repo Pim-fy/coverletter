@@ -22,21 +22,27 @@ public class RecruitController {
     }
 
     @PostMapping("/{userId}")       // 지원 정보 생성
-    public RecruitDto.CreateResponse createResponse(@PathVariable Long userId, @RequestBody @Valid RecruitDto.CreateRequest request) {
+    public RecruitDto.CreateResponse createResponse(@PathVariable("userId") Long userId, @RequestBody @Valid RecruitDto.CreateRequest request) {
         return recruitService.createResponse(userId, request);
     }
 
     @GetMapping("/{userId}")        // 지원 정보 조회
-    public RecruitDto.ReadResponse readResponse(@PathVariable Long userId) {
+    public RecruitDto.ReadResponse readResponse(@PathVariable("userId") Long userId) {
         return recruitService.readResponse(userId);
     }
     
     @PutMapping("/{userId}")        // 지원 정보 수정
-    public RecruitDto.UpdateResponse updateResponse(@PathVariable Long userId, @RequestBody @Valid RecruitDto.UpdateRequest request) {
+    public RecruitDto.UpdateResponse updateResponse(@PathVariable("userId") Long userId, @RequestBody @Valid RecruitDto.UpdateRequest request) {
         return recruitService.updateResponse(userId, request);
     }
     @DeleteMapping("/{userId}/{recruitId}")      // 지원 정보 삭제
-    public RecruitDto.DeleteResponse deleteResponse(@PathVariable Long userId, @PathVariable Long recruitId) {
+    public RecruitDto.DeleteResponse deleteResponse(@PathVariable("userId") Long userId, @PathVariable("recruitId") Long recruitId) {
         return recruitService.deleteResponse(userId, recruitId);
+    }
+
+    // 모든 지원 정보 삭제 컨트롤러
+    @DeleteMapping("/user/{userId}")
+    public RecruitDto.DeleteResponse deleteAllResponse(@PathVariable("userId") Long userId) {
+        return recruitService.deleteAllResponse(userId);
     }
 }

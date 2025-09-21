@@ -60,6 +60,7 @@ public class EducationService {
         if(educationList != null && !educationList.isEmpty()) {
             List<EducationDto.ReadResponse.EducationInfo> educationInfos = educationList.stream()
             .map(education -> new EducationDto.ReadResponse.EducationInfo(
+                education.getEducationId(),
                 education.getEducationStartDate(),
                 education.getEducationEndDate(),
                 education.getEducationStatus(),

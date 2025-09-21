@@ -10,4 +10,6 @@ public interface MilitaryRepository extends JpaRepository<Military, Long> {
     
     List<Military> findByMemberUserId(Long userId);
     Optional<Military> findByMilitaryId(Long militaryId);
+
+    void deleteByMemberUserId(Long userId);
 }

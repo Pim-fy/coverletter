@@ -43,6 +43,7 @@ public class QualificationDto {
         @Setter
         @AllArgsConstructor @NoArgsConstructor
         public static class QualificationInfo {
+            private Long qualificationId;
             private String qualificationName;           // 자격명
             private String qualificationDate;           // 취득일
             private String qualificationCompany;        // 발급처

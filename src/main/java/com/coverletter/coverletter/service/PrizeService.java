@@ -53,6 +53,7 @@ public class PrizeService {
         if(prizeList != null && !prizeList.isEmpty()) {
             List<PrizeDto.ReadResponse.PrizeInfo> prizeInfos = prizeList.stream()
             .map(prize -> new PrizeDto.ReadResponse.PrizeInfo(
+                prize.getPrizeId(),
                 prize.getPrizeName(),
                 prize.getPrizeCompany(),
                 prize.getPrizeYear(),

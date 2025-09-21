@@ -55,6 +55,7 @@ public class EducationDto {
         @Setter
         @AllArgsConstructor @NoArgsConstructor
         public static class EducationInfo {
+            private Long educationId;
             private String educationStartDate;      // 입학일
             private String educationEndDate;        // 졸업일
             private EducationStatus educationStatus;    // 상태 

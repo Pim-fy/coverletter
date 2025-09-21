@@ -47,6 +47,7 @@ public class TrainingDto {
         @Setter
         @AllArgsConstructor @NoArgsConstructor
         public static class TrainingInfo {
+            private Long trainingId;
             private String trainingStartDate;       // 교육 기간(시작일)
             private String trainingEndDate;         // 교육 기간(종료일)
             private String trainingName;            // 교육 과정명

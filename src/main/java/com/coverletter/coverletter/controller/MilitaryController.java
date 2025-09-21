@@ -24,20 +24,25 @@ public class MilitaryController {
     }
 
     @PostMapping("/{userId}")       // 병역 정보 생성
-    public MilitaryDto.CreateResponse createResponse(@PathVariable Long userId, @RequestBody @Valid MilitaryDto.CreateRequest request) {
+    public MilitaryDto.CreateResponse createResponse(@PathVariable("userId") Long userId, @RequestBody @Valid MilitaryDto.CreateRequest request) {
         return militaryService.createResponse(userId, request);
     }
 
     @GetMapping("/{userId}")        // 병역 정보 조회
-    public MilitaryDto.ReadResponse readResponse(@PathVariable Long userId) {
+    public MilitaryDto.ReadResponse readResponse(@PathVariable("userId") Long userId) {
         return militaryService.readResponse(userId);
     } 
     @PutMapping("/{userId}")        // 병역 정보 수정
-    public MilitaryDto.UpdateResponse updateResponse(@PathVariable Long userId, @RequestBody @Valid MilitaryDto.UpdateRequest request) {
+    public MilitaryDto.UpdateResponse updateResponse(@PathVariable("userId") Long userId, @RequestBody @Valid MilitaryDto.UpdateRequest request) {
         return militaryService.updateResponse(userId, request);
     }
     @DeleteMapping("/{userId}/{militaryId}")        // 병역 정보 삭제
-    public MilitaryDto.DeleteResponse deleteResponse(@PathVariable Long userId, @PathVariable Long militaryId) {
+    public MilitaryDto.DeleteResponse deleteResponse(@PathVariable("userId") Long userId, @PathVariable("militaryId") Long militaryId) {
         return militaryService.deleteResponse(userId, militaryId);
+    }
+
+    @DeleteMapping("/user/{userId}")        // 병역 정보 전체 삭제
+    public MilitaryDto.DeleteResponse deleteAllResponse(@PathVariable("userId") Long userId) {
+        return militaryService.deleteAllResponse(userId);
     }
 }

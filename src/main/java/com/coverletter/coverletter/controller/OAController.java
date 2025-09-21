@@ -24,21 +24,26 @@ public class OAController {
     }
     
     @PostMapping("/{userId}")           // 컴퓨터능력 정보 생성
-    public OADto.CreateResponse createResponse(@PathVariable Long userId, @RequestBody @Valid OADto.CreateRequest request) {
+    public OADto.CreateResponse createResponse(@PathVariable("userId") Long userId, @RequestBody @Valid OADto.CreateRequest request) {
         return oaService.createResponse(userId, request);
     }
     
     @GetMapping("/{userId}")            // 컴퓨터능력 정보 조회
-    public OADto.ReadResponse readResponse(@PathVariable Long userId) {
+    public OADto.ReadResponse readResponse(@PathVariable("userId") Long userId) {
         return oaService.readResponse(userId);
     }
 
     @PutMapping("/{userId}")            // 컴퓨터능력 정보 수정
-    public OADto.UpdateResponse updateResponse(@PathVariable Long userId, @RequestBody @Valid OADto.UpdateRequest request) {
+    public OADto.UpdateResponse updateResponse(@PathVariable("userId") Long userId, @RequestBody @Valid OADto.UpdateRequest request) {
         return oaService.updateResponse(userId, request);
     }
     @DeleteMapping("/{userId}/{oaId}")       // 컴퓨터능력 정보 삭제
-    public OADto.DeleteResponse deleteResponse(@PathVariable Long userId, @PathVariable Long oaId) {
+    public OADto.DeleteResponse deleteResponse(@PathVariable("userId") Long userId, @PathVariable("oaId") Long oaId) {
         return oaService.deleteResponse(userId, oaId);
+    }
+
+    @DeleteMapping("/user/{userId}")        // OA 정보 전체 삭제
+    public OADto.DeleteResponse deleteAllResponse(@PathVariable("userId") Long userId) {
+        return oaService.deleteAllResponse(userId);
     }
 }

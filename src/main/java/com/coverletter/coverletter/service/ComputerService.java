@@ -47,6 +47,7 @@ public class ComputerService {
         if(computerList != null && !computerList.isEmpty()) {
             List<ComputerDto.ReadResponse.ComputerInfo> computerInfos = computerList.stream()
             .map(computer -> new ComputerDto.ReadResponse.ComputerInfo(
+                computer.getComputerId(),
                 computer.getComputer()
             ))
             .collect(Collectors.toList());
@@ -97,5 +98,12 @@ public class ComputerService {
         } else {
             return new ComputerDto.DeleteResponse(false, "삭제 실패");
         }
+    }
+
+    // 컴퓨터 능력 정보 전체 삭제
+    @Transactional
+    public ComputerDto.DeleteResponse deleteAllResponse(Long userId) {
+        computerRepository.deleteByMemberUserId(userId);
+        return new ComputerDto.DeleteResponse(true, "모든 컴퓨터 능력 정보가 삭제되었습니다.");
     }
 }

@@ -42,6 +42,7 @@ public class ComputerDto {
         @Setter
         @AllArgsConstructor @NoArgsConstructor
         public static class ComputerInfo {
+            private Long computerId;
             private String computer;
         }
     }

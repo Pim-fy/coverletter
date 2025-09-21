@@ -54,6 +54,7 @@ public class MilitaryService {
         if(militaryList != null && !militaryList.isEmpty()) {
             List<MilitaryDto.ReadResponse.MilitaryInfo> militaryInfos = militaryList.stream()
             .map(military -> new MilitaryDto.ReadResponse.MilitaryInfo(
+                military.getMilitaryId(),
                 military.getMilitaryStatus(),
                 military.getMilitaryRank(),
                 military.getMilitaryBranch(),
@@ -115,5 +116,12 @@ public class MilitaryService {
         } else {
             return new MilitaryDto.DeleteResponse(false, "삭제 실패");
         }
+    }
+
+    // 병역 정보 전체 삭제
+    @Transactional
+    public MilitaryDto.DeleteResponse deleteAllResponse(Long userId) {
+        militaryRepository.deleteByMemberUserId(userId);
+        return new MilitaryDto.DeleteResponse(true, "모든 병역 정보가 삭제되었습니다.");
     }
 }

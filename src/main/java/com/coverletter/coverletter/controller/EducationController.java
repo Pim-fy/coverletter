@@ -24,20 +24,20 @@ public class EducationController {
     }
 
     @PostMapping("/{userId}")         // 학력 정보 생성
-    public EducationDto.CreateResponse createResponse(@PathVariable Long userId, @RequestBody @Valid EducationDto.CreateRequest request) {
+    public EducationDto.CreateResponse createResponse(@PathVariable("userId") Long userId, @RequestBody @Valid EducationDto.CreateRequest request) {
         return educationService.createResponse(userId, request);
     }
 
     @GetMapping("/{userId}")          // 학력 정보 조회
-    public EducationDto.ReadResponse readResponse(@PathVariable Long userId) {
+    public EducationDto.ReadResponse readResponse(@PathVariable("userId") Long userId) {
         return educationService.readResponse(userId);
     }
     @PutMapping("/{userId}")          // 학력 정보 수정
-    public EducationDto.UpdateResponse updateResponse(@PathVariable Long userId, @RequestBody @Valid EducationDto.UpdateRequest request) {
+    public EducationDto.UpdateResponse updateResponse(@PathVariable("userId") Long userId, @RequestBody @Valid EducationDto.UpdateRequest request) {
         return educationService.updateResponse(userId, request);
     }
     @DeleteMapping("/{userId}/{educationId}")      // 학력 정보 삭제
-    public EducationDto.DeleteResponse deleteResponse(@PathVariable Long userId, @PathVariable Long educationId) {
+    public EducationDto.DeleteResponse deleteResponse(@PathVariable("userId") Long userId, @PathVariable("educationId") Long educationId) {
         return educationService.deleteResponse(userId, educationId);
     }
 }

@@ -10,4 +10,6 @@ public interface OARepository extends JpaRepository<OA, Long> {
     
     List<OA> findByMemberUserId(Long userId);
     Optional<OA> findByOaId(Long oaId);
+
+    void deleteByMemberUserId(Long userId);
 }

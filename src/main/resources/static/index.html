@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>입사지원서</title>
+    <style>
+        body { font-family: 'Malgun Gothic', '맑은 고딕', sans-serif; font-size: 14px; margin: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 30px; table-layout: fixed; }
+        th, td { border: 1px solid #000; padding: 8px; text-align: center; vertical-align: middle; height: 35px; word-break: keep-all; }
+        .header { background-color: #f2f2f2; font-weight: bold; }
+        .main-title { font-size: 28px; font-weight: bold; text-align: center; margin-bottom: 25px; }
+        .nested-table { width: 100%; height: 100%; border: none; }
+        .nested-table td, .nested-table th { border: 1px solid #000; }
+        .no-border { border: none; }
+        .clickable-section:hover {
+            cursor: pointer;
+            background-color: #f9f9f9;
+            outline: 2px solid #007bff;
+        }
+        .table-note {
+            text-align: right;
+            font-size: 12px;
+            color: #555;
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2 class="main-title">입사지원서</h2>
+
+    <table class="clickable-section" data-url="/member-edit.html">
+        <colgroup>
+            <col style="width: 240px;"><col style="width: 10%;"><col style="width: auto;"><col style="width: 10%;"><col style="width: auto;"><col style="width: 10%;"><col style="width: auto;">
+        </colgroup>
+        <tbody>
+            <tr>
+                <td rowspan="5" class="left-header header" style="padding: 10px; vertical-align: middle;">
+                    <img id="profile-image-display" src="" alt="프로필 사진" style="max-width: 100%; height: auto; max-height: 200px; object-fit: cover; display: none;">
+
+                    <div id="profile-image-fallback">
+                        (최근 3개월 이내<br>촬영한 사진)
+                    </div>
+                </td>
+                <td class="header">구분</td><td><span id="recruitmentType"></span></td>
+                <td class="header">모집부문</td><td><span id="recruitmentPart"></span></td>
+                <td class="header">희망연봉</td><td><span id="salaryRequirement"></span></td>
+            </tr>
+            <tr>
+                <td class="header">성명</td><td><span id="name"></span></td>
+                <td class="header">생년월일</td><td colspan="3"><span id="dateOfBirth"></span></td>
+            </tr>
+            <tr>
+                <td class="header">실거주지 주소</td><td colspan="5"><span id="address"></span></td>
+            </tr>
+            <tr>
+                <td class="header">연락처(H.P)</td><td colspan="2"><span id="phoneNumber"></span></td>
+                <td class="header">비상연락처</td><td colspan="2"><span id="emergencyPhoneNumber"></span></td>
+            </tr>
+            <tr>
+                <td class="header">E-mail</td><td colspan="5"><span id="email"></span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="table-note">(고등학교 이후 학력기재)</div>
+
+    <table class="clickable-section" data-url="/education-edit.html">
+        <colgroup>
+            <col style="width: 120px;"><col style="width: 20%;"><col style="width: auto;"><col style="width: 15%;">
+            <col style="width: 15%;"><col style="width: 10%;"><col style="width: auto;">
+        </colgroup>
+        <tbody>
+            <tr>
+                <td rowspan="4" class="left-header header">학력</td>
+                <td class="header">기간</td>
+                <td colspan="3" class="header">학교</td>
+                <td class="header">전공</td>
+                <td class="header">학점</td>
+                <td class="header">소재지</td>
+            </tr>
+            <tr>
+                <td><span id="hs_period"></span></td>
+                <td><span id="hs_schoolName"></span></td>
+                <td><span id="hs_schoolType"></span></td>
+                <td><span id="hs_status"></span></td>
+                <td><span id="hs_major"></span></td>
+                <td><span id="hs_grade"></span></td>
+                <td><span id="hs_location"></span></td>
+            </tr>
+            <tr>
+                <td><span id="uni_period"></span></td>
+                <td><span id="uni_schoolName"></span></td>
+                <td><span id="uni_schoolType"></span></td>
+                <td><span id="uni_status"></span></td>
+                <td><span id="uni_major"></span></td>
+                <td><span id="uni_grade"></span></td>
+                <td><span id="uni_location"></span></td>
+            </tr>
+            <tr>
+                <td class="header">휴학기간/사유</td>
+                <td colspan="6"><span id="uni_absence"></span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="table-note">(최근내역부터 작성)</div>
+
+    <table class="clickable-section" data-url="/career-edit.html">
+        <colgroup>
+            <col style="width: 120px;"><col style="width: auto;"><col style="width: 20%;"><col style="width: auto;"><col style="width: 20%;">
+        </colgroup>
+        <tbody id="career-list-container">
+            <tr>
+                <td rowspan="2" class="left-header header">경력</td>
+                <td class="header">회사명</td><td class="header">근무기간</td>
+                <td class="header">담당업무</td><td class="header">퇴사사유</td>
+            </tr>
+            </tbody>
+    </table>
+
+    <table class="clickable-section" data-url="/training-edit.html">
+        <colgroup>
+            <col style="width: 120px;"><col style="width: 20%;"><col style="width: 20%;"><col style="width: auto;"><col style="width: 20%;"><col style="width: 10%;">
+        </colgroup>
+        <tbody id="training-list-container">
+            <tr>
+                <td rowspan="2" class="left-header header">교육사항</td>
+                <td class="header">교육기간</td><td class="header">교육과정</td>
+                <td class="header">교육내용</td><td class="header">교육기관</td><td class="header">수료여부</td>
+            </tr>
+            </tbody>
+    </table>
+    
+    <table class="clickable-section" data-url="/prize-edit.html">
+         <colgroup>
+            <col style="width: 120px;"><col style="width: auto;"><col style="width: 25%;"><col style="width: 20%;"><col style="width: 15%;">
+        </colgroup>
+        <tbody id="prize-list-container">
+            <tr>
+                <td rowspan="2" class="left-header header">수상경력</td>
+                <td class="header">수상내용</td><td class="header">수상처</td>
+                <td class="header">수상년도</td><td class="header">비고</td>
+            </tr>
+            </tbody>
+    </table>
+
+    <table class="clickable-section" data-url="/qualification-edit.html">
+        <colgroup>
+            <col style="width: 120px;"><col style="width: auto;"><col style="width: 25%;"><col style="width: 25%;">
+        </colgroup>
+        <tbody id="qualification-list-container">
+            <tr>
+                <td rowspan="2" class="left-header header">자격사항</td>
+                <td class="header">자격면허</td>
+                <td class="header">취득일자</td>
+                <td class="header">발급처</td>
+            </tr>
+            </tbody>
+    </table>
+
+    <table class="clickable-section" data-url="/language-edit.html">
+        <colgroup>
+            <col style="width: 120px;"><col style="width: auto;"><col style="width: 25%;"><col style="width: 25%;">
+        </colgroup>
+        <tbody id="language-list-container">
+            <tr>
+                <td rowspan="2" class="left-header header">외국어</td>
+                <td class="header">시험명</td>
+                <td class="header">취득일자</td>
+                <td class="header">점수</td>
+            </tr>
+            </tbody>
+    </table>
+
+    <table class="clickable-section" data-url="/skills-edit.html">
+        <tbody>
+            <tr>
+                <td style="width: 33.33%; padding: 0;" class="no-border">
+                    <table class="nested-table"><tbody>
+                        <tr><td rowspan="5" class="header" style="width: 40%;">OA활용능력</td><td class="header">종류</td><td class="header">상/중/하</td></tr>
+                        <tr><td class="header">한글</td><td><span id="oa_hancom"></span></td></tr>
+                        <tr><td class="header">엑셀</td><td><span id="oa_excel"></span></td></tr>
+                        <tr><td class="header">파워포인트</td><td><span id="oa_powerpoint"></span></td></tr>
+                        <tr><td class="header">기타가능SW</td><td><span id="oa_etc"></span></td></tr>
+                    </tbody></table>
+                </td>
+                <td style="width: 33.33%; padding: 0;" class="no-border">
+                    <table class="nested-table"><tbody>
+                        <tr><td class="header" style="width: 40%;">컴퓨터 사용능력<br><small style="font-weight:normal;">(개발 언어 또는<br>기술적인 TOOL)</small></td><td><span id="computer_skills"></span></td></tr>
+                    </tbody></table>
+                </td>
+                <td style="width: 33.33%; padding: 0;" class="no-border">
+                    <table class="nested-table"><tbody>
+                        <tr><td rowspan="5" class="header" style="width: 40%;">병역사항</td><td class="header">병역구분</td><td><span id="military_status"></span></td></tr>
+                        <tr><td class="header">계급</td><td><span id="military_rank"></span></td></tr>
+                        <tr><td class="header">병과</td><td><span id="military_branch"></span></td></tr>
+                        <tr><td class="header">제대구분</td><td><span id="military_discharge"></span></td></tr>
+                        <tr><td class="header">복무기간</td><td><span id="military_period"></span></td></tr>
+                    </tbody></table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table style="display: none;">
+        <tbody id="templates">
+            <tr id="education-row-template">
+                <td><span class="period"></span></td>
+                <td><span class="schoolName"></span></td>
+                <td><span class="major"></span></td>
+                <td><span class="grade"></span></td>
+                <td><span class="type"></span></td>
+                <td><span class="location"></span></td>
+                <td><span class="absence"></span></td> 
+            </tr>
+            <tr id="career-row-template">
+                <td><span class="company"></span></td><td><span class="period"></span></td>
+                <td><span class="task"></span></td><td><span class="reason"></span></td>
+            </tr>
+            <tr id="training-row-template">
+                <td><span class="period"></span></td><td><span class="name"></span></td>
+                <td><span class="content"></span></td><td><span class="company"></span></td>
+                <td><span class="status"></span></td>
+            </tr>
+            <tr id="prize-row-template">
+                <td><span class="name"></span></td><td><span class="company"></span></td>
+                <td><span class="year"></span></td><td><span class="etc"></span></td>
+            </tr>
+            <tr id="qualification-row-template">
+                <td><span class="name"></span></td><td><span class="date"></span></td><td><span class="company"></span></td>
+            </tr>
+            <tr id="language-row-template">
+                <td><span class="name"></span></td><td><span class="date"></span></td><td><span class="score"></span></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <script src="/js/resume.js" defer></script>
+</body>
+</html>

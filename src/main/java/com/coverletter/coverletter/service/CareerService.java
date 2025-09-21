@@ -55,6 +55,7 @@ public class CareerService {
         if(careerList != null && !careerList.isEmpty()) {
             List<CareerDto.ReadResponse.CareerInfo> careerInfos = careerList.stream()
             .map(career -> new CareerDto.ReadResponse.CareerInfo(
+                career.getCareerId(),
                 career.getCompany(),
                 career.getCareerStartDate(),
                 career.getCareerEndDate(),

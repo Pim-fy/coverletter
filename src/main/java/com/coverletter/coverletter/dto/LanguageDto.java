@@ -44,6 +44,7 @@ public class LanguageDto {
         @Setter
         @AllArgsConstructor @NoArgsConstructor
         public static class LanguageInfo {
+            private Long languageId;
             private String Language;       // 외국어 시험명
             private String LanguageDate;   // 외국어 취득일자
             private String LanguageScore;  // 외국어 점수

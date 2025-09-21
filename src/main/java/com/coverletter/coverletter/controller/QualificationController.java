@@ -24,22 +24,22 @@ public class QualificationController {
     }
 
     @PostMapping("/{userId}")           // 자격 정보 생성
-    public QualificationDto.CreateResponse createResponse(@PathVariable Long userId, @RequestBody @Valid QualificationDto.CreateRequest request) {
+    public QualificationDto.CreateResponse createResponse(@PathVariable("userId")  Long userId, @RequestBody @Valid QualificationDto.CreateRequest request) {
         return qualificationService.createResponse(userId, request);
     }
 
     @GetMapping("/{userId}")            // 자격 정보 조회
-    public QualificationDto.ReadResponse readResponse(@PathVariable Long userId) {
+    public QualificationDto.ReadResponse readResponse(@PathVariable("userId")  Long userId) {
         return qualificationService.readResponse(userId);
     }
 
     @PutMapping("/{userId}")            // 자격 정보 수정
-    public QualificationDto.UpdateResponse updateResponse(@PathVariable Long userId, @RequestBody @Valid QualificationDto.UpdateRequest request) {
+    public QualificationDto.UpdateResponse updateResponse(@PathVariable("userId")  Long userId, @RequestBody @Valid QualificationDto.UpdateRequest request) {
         return qualificationService.updateResponse(userId, request);
     }
 
     @DeleteMapping("/{userId}/{qualificationId}") // 자격 정보 삭제
-    public QualificationDto.DeleteResponse deleteResponse(@PathVariable Long userId, @PathVariable Long qualificationId) {
+    public QualificationDto.DeleteResponse deleteResponse(@PathVariable("userId")  Long userId, @PathVariable("qualificationId")  Long qualificationId) {
         return qualificationService.deleteResponse(userId, qualificationId);
     }
 }

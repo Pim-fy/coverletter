@@ -84,7 +84,7 @@ public class LanguageService {
 
             if(dto.getLanguage() != null) {language.setLanguage(dto.getLanguage());}
             if(dto.getLanguageDate() != null) {language.setLanguageDate(dto.getLanguageDate());}
-            if(dto.getLanguageScore() != null) {language.setLanguageScore(dto.getLanguageDate());}
+            if(dto.getLanguageScore() != null) {language.setLanguageScore(dto.getLanguageScore());}
             languageRepository.save(language);
             return new LanguageDto.UpdateResponse(true, "수정 완료.");
         } else {

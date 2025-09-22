@@ -95,7 +95,7 @@ public class MilitaryService {
             militaryRepository.save(military);
             return new MilitaryDto.UpdateResponse(true, "수정 완료.");
         } else {
-            return new MilitaryDto.UpdateResponse(true, "수정 실패.");
+            return new MilitaryDto.UpdateResponse(false, "수정 실패.");
         }
     }
 

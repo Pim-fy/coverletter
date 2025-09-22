@@ -81,7 +81,7 @@ public class CareerDto {
     @Setter
     public static class DeleteRequest {
         private Long userId;
-        private Long carrerId;
+        private Long careerId;
     }
 
     @Getter
